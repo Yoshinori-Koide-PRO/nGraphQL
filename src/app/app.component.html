@@ -1,0 +1,39 @@
+<h2>Books Editor By GraphQL Pub/Sub</h2>
+
+<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<button (click)="search(searchBox.value)">検索</button>
+<ul>
+  <li *ngFor="let bookkv of (books | async | keyvalue)">
+    <span>Title:{{ bookkv.value.title }}</span
+    >,
+    <span>Author:{{ bookkv.value.author }}</span>
+
+    <button (click)="remove(bookkv.value.id)">Delete</button>
+  </li>
+</ul>
+
+<h3>Add book:</h3>
+<div>
+  <label>Title: <input #titleInput placeholder="title" /> </label><br />
+  <label
+    >Author:
+    <input #authorInput placeholder="author" />
+  </label>
+  <button (click)="add(authorInput.value, titleInput.value)">Add</button>
+</div>
+
+<ul>
+  <li>「検索」ボタンをクリックして一覧を表示するとSubscription開始します。</li>
+  <li>このページを開いているすべてのブラウザでリストが同期されます。</li>
+  <li>Updateの機能は未実装です。追加、削除飲みに対応してます。(手抜き)</li>
+  <li>
+    http://[ホストのアドレス]:4000/graphql
+    でGraphQLサーバーが立ち上がっています。
+  </li>
+  <li>
+    Subscription 開始後は
+    GraphQLサーバー側のAPIから直接Mutateを投げてもリストが更新されます。
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
