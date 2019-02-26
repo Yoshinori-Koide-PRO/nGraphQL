@@ -28,9 +28,9 @@ export class BookRepository {
   }
 
   delete(entry: BookEntity) {
-    const targets = BookStrageEngine.get(entry.id);
-    if (targets != null) {
-      const e = targets[0] as BookEntity;
+    const target = BookStrageEngine.get(entry.id);
+    if (target != null) {
+      const e = target as BookEntity;
       // idで比較
       const index = Books.map(e => e.id).indexOf(e.id);
       const retVal = Books[index];

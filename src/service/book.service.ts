@@ -76,8 +76,8 @@ export class BookService {
         variables: {
           book: {
             id: id,
-            author: null,
-            title: null
+            author: '',
+            title: ''
           }
         }
       })

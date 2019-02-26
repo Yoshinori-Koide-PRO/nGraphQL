@@ -12,7 +12,15 @@ const app = express();
 
 process.on('uncaughtException', err => console.error(err));
 process.on('unhandledRejection', err => console.error(err));
-
+// CORSを許可する
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 // resolvers
 const server = new ApolloServer({ typeDefs: TypeDefs, resolvers });
 server.applyMiddleware({ app, path: '/graphql' });
