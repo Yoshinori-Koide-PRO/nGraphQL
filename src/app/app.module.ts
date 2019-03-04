@@ -15,6 +15,7 @@ import { ApolloLink } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { BookSubscriber } from 'src/service/book.subscriber';
+import { environment } from 'src/environments/environment';
 
 interface DefinintionNode {
   kind: string;
@@ -35,7 +36,9 @@ interface DefinintionNode {
 })
 export class AppModule {
   constructor(apollo: Apollo, httpLink: HttpLink) {
-    const endpoint = `${window.location.hostname}:4000/graphql`;
+    const endpoint = `${window.location.hostname}:${
+      environment.gqlPort
+    }/graphql`;
     const http = httpLink.create({
       uri: `http://${endpoint}`
     }) as ApolloLink;
