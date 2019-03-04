@@ -4,7 +4,7 @@ GraphQL Query, Mutate, SubScription Sample on Apollo Server + Express + Angular
 
 サーバーサイドを Apollo Server + Express、クライアントサイドを Angular + Apollo Client で実装した GraphQL のサンプルです。
 
-詳しい構築手順は → のページをご覧ください。
+詳しい構築手順は → https://qiita.com/koinori/items/56dc25d72bcdebdc4e78 のページをご覧ください。
 
 技術検証が目的のため、テストコードなどはゼロです。すいません。。。
 
